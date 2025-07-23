@@ -3,27 +3,12 @@ import { useState } from 'react'
 function App() {
 
   const url = 'https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts'
-
-  const [author, setAuthor] = useState('')
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-  const [publish, setPublish] = useState(false)
-
-  function handleAuthorChange(e) {
-    setAuthor(e.target.value)
-  }
-
-  function handleTitleChange(e) {
-    setTitle(e.target.value)
-  }
-
-  function handleBodyChange(e) {
-    setBody(e.target.value)
-  }
-
-  function handlePublishChange(e) {
-    setPublish(e.target.checked)
-  }
+  const [formData, setFormData] = useState({
+    author: '',
+    title: '',
+    body: '',
+    publish: false
+  })
 
   return (
     <>
@@ -38,12 +23,12 @@ function App() {
               <input
                 type="text"
                 className="form-control"
-                value={author}
+                value={formData.author}
                 name="author"
                 id="author"
                 aria-describedby="helpId"
                 placeholder="Type the name of the author here"
-                onChange={handleAuthorChange}
+                onChange={(e) => { setFormData({ ...formData, author: e.target.value }) }}
               />
             </div>
             {/* Text input for Title */}
@@ -54,12 +39,12 @@ function App() {
               <input
                 type="text"
                 className="form-control"
-                value={title}
+                value={formData.title}
                 name="title"
                 id="title"
                 aria-describedby="helpId"
                 placeholder="Type the title of the post here"
-                onChange={handleTitleChange}
+                onChange={(e) => { setFormData({ ...formData, title: e.target.value }) }}
               />
             </div>
             {/* Textarea input for Body */}
@@ -69,11 +54,11 @@ function App() {
               </label>
               <textarea className="form-control"
                 name="body"
-                value={body}
+                value={formData.body}
                 id="body"
                 rows="3"
                 placeholder='Enter the content of your post here'
-                onChange={handleBodyChange}
+                onChange={(e) => { setFormData({ ...formData, body: e.target.value }) }}
               >
               </textarea>
             </div>
@@ -84,7 +69,7 @@ function App() {
                 type="checkbox"
                 name='publish'
                 id="publish"
-                onChange={handlePublishChange}
+                onChange={(e) => { setFormData({ ...formData, publish: e.target.checked }) }}
               />
               <label className="form-check-label" htmlFor="publish">
                 Publish this post?
