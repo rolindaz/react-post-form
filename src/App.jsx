@@ -8,14 +8,15 @@ function App() {
     author: '',
     title: '',
     body: '',
-    publish: false
+    public: false
   })
 
   function addNewPost(e) {
     e.preventDefault()
     fetch(url, {
       method: "POST",
-      body: formData
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
     })
       .then(response => response.json())
       .then(data => {
@@ -75,14 +76,14 @@ function App() {
               >
               </textarea>
             </div>
-            {/* Checkbox input for Publish */}
+            {/* Checkbox input for public */}
             <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
-                name='publish'
-                id="publish"
-                onChange={(e) => { setFormData({ ...formData, publish: e.target.checked }) }}
+                name='public'
+                id="public"
+                onChange={(e) => { setFormData({ ...formData, public: e.target.checked }) }}
               />
               <label className="form-check-label" htmlFor="publish">
                 Publish this post?
