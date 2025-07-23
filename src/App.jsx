@@ -51,7 +51,18 @@ function App() {
           placeholder='Enter the content of your post here'
         >
         </textarea>
-
+        {/* Checkbox input for Public */}
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name='public'
+            id="public"
+          />
+          <label class="form-check-label" for="public">
+            Publish this post
+          </label>
+        </div>
 
       </div>
 
