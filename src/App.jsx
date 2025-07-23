@@ -2,6 +2,11 @@ import { useState } from 'react'
 
 function App() {
 
+  const [author, setAuthor] = useState('')
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
+  const [publish, setPublish] = useState(false)
+
   return (
     <>
       <div className="container mt-5">
@@ -51,15 +56,15 @@ function App() {
               >
               </textarea>
             </div>
-            {/* Checkbox input for Public */}
+            {/* Checkbox input for Publish */}
             <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
-                name='public'
-                id="public"
+                name='publish'
+                id="publish"
               />
-              <label className="form-check-label" htmlFor="public">
+              <label className="form-check-label" htmlFor="publish">
                 Publish this post?
               </label>
             </div>
