@@ -40,6 +40,21 @@ function App() {
           Post Title
         </small>
       </div>
+      {/* Textarea input for Body */}
+      <div class="mb-3">
+        <label for="body" class="form-label"></label>
+        <textarea class="form-control"
+          name="body"
+          value=''
+          id="body"
+          rows="3"
+          placeholder='Enter the content of your post here'
+        >
+        </textarea>
+
+
+      </div>
+
 
     </>
   )
