@@ -3,6 +3,7 @@ import { useState } from 'react'
 function App() {
 
   const url = 'https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts'
+
   const [formData, setFormData] = useState({
     author: '',
     title: '',
@@ -10,11 +11,22 @@ function App() {
     publish: false
   })
 
+  function addNewPost(e) {
+    e.preventDefault()
+    fetch(url, {
+      method: "POST"
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+  }
+
   return (
     <>
       <div className="container mt-5">
         <div className="card p-4">
-          <form>
+          <form onSubmit={addNewPost}>
             {/* Text input for Author */}
             <div className="mb-3">
               <label htmlFor="author" className="form-label">
